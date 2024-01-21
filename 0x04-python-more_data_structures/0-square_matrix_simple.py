@@ -8,4 +8,4 @@ def square_matrix_simple(matrix=[]):
         result = list(map(lambada x: x**2, i))
         new_matrix.append(result)
 
-        return new_matrix
+    return new_matrix
