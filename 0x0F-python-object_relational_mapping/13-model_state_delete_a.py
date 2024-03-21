@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
 """
-This script changes the name of a State object
+This script deletes all State objects
+with a name containing the letter `a`
 from the database
 """
 
@@ -11,17 +12,17 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
+    """
+    Deletes State objects on the database
+    """
 
-    """
-    Updates a State object on the database
-    """
- 
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
         argv[1], argv[2], argv[3]))
-    Base.metadata.create_all(engine)
     Session = sessionmaker(bind = engine)
     session = Session()
-    new_ins = session.query(State).filter(State.id == '2').first()
-    new_ins.name = 'New Mexico'
+
+    for ins in session.query(State).filter(State.name.contains('a')):
+        session.delete(ins)
+
     session.commit()
     session.close()
