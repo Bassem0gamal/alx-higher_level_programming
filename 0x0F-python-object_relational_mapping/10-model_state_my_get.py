@@ -15,7 +15,7 @@ if __name__ == "__main__":
     session = Session()
     instance = session.query(State).filter(State.name == argv[4]).first()
 
-    try:
-        print(instance[0].id)
-    except IndexError:
-        print("Not found")
+    if instance is None:
+        print('Not found')
+    else:
+        print('{0}'.format(instance.id))
