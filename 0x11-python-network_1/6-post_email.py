@@ -11,4 +11,4 @@ if __name__ == "__main__":
     email = {"email": sys.argv[2]}
     request = requests.post(sys.argv[1], data = email)
 
-    print(request.txet)
+    print(request.text)
