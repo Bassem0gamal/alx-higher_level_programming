@@ -1,7 +1,2 @@
 #!/bin/bash
-filename=$(basename "$PYFILE")
-filename="${filename%.*}"
-
 python3 -m compileall -b $PYFILE
-
-mv "${filename}.pyc" "${PYFILE}c"
